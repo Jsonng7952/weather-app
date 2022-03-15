@@ -1,0 +1,101 @@
+@font-face {
+  font-family: pageFont;
+  src: url('fonts/Roboto-Regular.ttf');
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: grid;
+  background-color: #262626;
+  grid-template-rows: 50px 1fr;
+  font-family: pageFont;
+}
+
+header {
+  background-color: #171717;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.search-bar-container {
+  position: relative;
+  display: flex;
+}
+
+.search-location {
+  width: 100%;
+  border: 1px solid white;
+  border-right: none;
+  padding: 5px;
+  height: 24px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  background-color: #171717;
+  color: white;
+}
+
+.search-button {
+  width: 40px;
+  height: 36px;
+  border: 1px solid white;
+  background: #171717;
+  text-align: center;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.current-weather-container {
+  border-radius: 20px;
+  padding: 20px;
+  height: 200px;
+  width: fit-content;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.current-location {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.current-temperature {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4em;
+  font-weight: bold;
+}
+
+.current-weather-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.high-low {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5em;
+}
