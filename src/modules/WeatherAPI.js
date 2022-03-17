@@ -1,5 +1,5 @@
 class WeatherAPI {
-  static key = '';
+  static key = '25df3105ad91b0c4320209f088aadb2d';
 
   static async getLocationData(placeName) {
     const location = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${placeName}&limit=5&appid=${this.key}`, {mode: 'cors'});
@@ -10,9 +10,9 @@ class WeatherAPI {
     return {lat, lon};
   }
 
-  static async getCurrentWeather(placeName) {
-
+  static async getAllWeather(placeName) {
     const {lat, lon} = await this.getLocationData(placeName);
+
     const currentWeather = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${this.key}`, {mode: 'cors'});
     const weatherData = await currentWeather.json();
 
@@ -37,23 +37,20 @@ class WeatherAPI {
   
     console.log({locationName, fahrenheit, celcius, weatherMain, weatherDescription, fahrenheitHigh, fahrenheitLow, celciusHigh, celciusLow})
 
-    return {locationName, fahrenheit, celcius, weatherMain, weatherDescription, fahrenheitHigh, fahrenheitLow, celciusHigh, celciusLow};
-  }
+    //------------------------------------------------------------------------------------------------------------------------------
 
-  static async getAllWeather(placeName) {
-    const {lat, lon} = await this.getLocationData(placeName);
-    
-    const allWeather = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${this.key}`, {mode: 'cors'});
-    const weatherData = await allWeather.json();
+    const allWeather = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&appid=${this.key}`, {mode: 'cors'});
+    const allWeatherData = await allWeather.json();
 
-    console.log(weatherData);
+    console.log(allWeatherData);
 
-    const hourlyData = weatherData.hourly.slice(0, 25);
-    hourlyData.forEach(hour => console.log( (new Date(hour.dt * 1000)).toLocaleString(), Math.round(1.8 * (hour.temp - 273.15) + 32), hour.weather[0].description ));
+    const hourlyData = allWeatherData.hourly.slice(0, 25);
+    //hourlyData.forEach(hour => console.log( (new Date(hour.dt * 1000)).toLocaleString(), Math.round(1.8 * (hour.temp - 273.15) + 32), hour.weather[0].description ));
 
-    const weeklyData = weatherData.daily;
-    weeklyData.forEach(day => console.log( (new Date(day.dt * 1000)).toLocaleString(), Math.round(1.8 * (day.temp.day - 273.15) + 32), day.weather[0].description ));
+    const weeklyData = allWeatherData.daily;
+    //weeklyData.forEach(day => console.log( (new Date(day.dt * 1000)).toLocaleString(), Math.round(1.8 * (day.temp.day - 273.15) + 32), day.weather[0].description ));
 
+    return {locationName, fahrenheit, celcius, weatherMain, weatherDescription, fahrenheitHigh, fahrenheitLow, celciusHigh, celciusLow, hourlyData, weeklyData};
   }
 }
 
