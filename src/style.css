@@ -52,21 +52,23 @@ header {
 }
 
 #content {
+  padding: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   color: white;
 }
 
 .current-weather-container {
+  border: 1px solid white;
   border-radius: 20px;
   padding: 20px;
   height: 200px;
   width: fit-content;
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: fit-content;
 }
 
 .current-location {
@@ -98,4 +100,50 @@ header {
   align-items: center;
   gap: 10px;
   font-size: 1.5em;
+}
+
+.hourly-weather-container {
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  width: 500px;
+  overflow: scroll;
+  overflow-y: hidden;
+}
+
+.hourly-weather {
+  border: 1px solid white;
+  text-align: center;
+  padding: 10px 0 10px 0;
+  font-weight: bold;
+}
+
+.weekly-weather-container {
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 20px;
+  font-weight: bold;
+  width: 500px;
+}
+
+.weekly-weather {
+  border: 1px solid white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.day-week-temperature {
+  display: flex;
+  gap: 10px;
+}
+
+.day-high-temperature {
+  color: #fbbf24;
+}
+
+.day-low-temperature {
+  color: #22d3ee;
 }
