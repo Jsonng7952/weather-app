@@ -1,5 +1,5 @@
 class WeatherAPI {
-  static key = '25df3105ad91b0c4320209f088aadb2d';
+  static key = '';
 
   static async getLocationData(placeName) {
     const location = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${placeName}&limit=5&appid=${this.key}`, {mode: 'cors'});
