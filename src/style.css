@@ -25,10 +25,10 @@ header {
 .search-bar-container {
   position: relative;
   display: flex;
+  align-items: center;
 }
 
 .search-location {
-  width: 100%;
   border: 1px solid white;
   border-right: none;
   padding: 5px;
@@ -43,12 +43,25 @@ header {
   width: 40px;
   height: 36px;
   border: 1px solid white;
+  border-radius: 0 5px 5px 0;
   background: #171717;
   text-align: center;
   color: white;
-  border-radius: 0 5px 5px 0;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 1.5em;
+}
+
+.temperature-metric {
+  width: 80px;
+  height: 34px;
+  border: 1px solid white;
+  background: #171717;
+  color: white;
+  cursor: pointer;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #content {
@@ -131,8 +144,9 @@ header {
 .weekly-weather {
   border: 1px solid white;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 10px 0 10px;
 }
 
 .day-week-temperature {

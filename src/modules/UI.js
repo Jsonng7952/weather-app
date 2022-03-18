@@ -15,13 +15,6 @@ class UI {
     return header;
   }
 
-  static content() {
-    const content = document.createElement('div');
-    content.id = 'content';
-
-    return content;
-  }
-
   static searchBar() {
     const searchBarContainer = this.createE('div', 'search-bar-container', '');
     const searchInput = this.createE('input', 'search-location', '');
@@ -36,6 +29,20 @@ class UI {
     searchBarContainer.appendChild(searchBtn);
 
     return searchBarContainer;
+  }
+
+  static temperatureMetric() {
+    const temperatureMetric = this.createE('div', 'temperature-metric', '');
+    temperatureMetric.textContent = '°F / °C';
+
+    return temperatureMetric;
+  }
+
+  static content() {
+    const content = document.createElement('div');
+    content.id = 'content';
+
+    return content;
   }
 
   static currentWeather() {

@@ -1,5 +1,5 @@
 class WeatherAPI {
-  static key = '';
+  static key = '5f070dc6134892e08bafa2d8888b94ef';
 
   static async getLocationData(placeName) {
     const location = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${placeName}&limit=5&appid=${this.key}`, {mode: 'cors'});
@@ -37,18 +37,12 @@ class WeatherAPI {
   
     console.log({locationName, fahrenheit, celcius, weatherMain, weatherDescription, fahrenheitHigh, fahrenheitLow, celciusHigh, celciusLow})
 
-    //------------------------------------------------------------------------------------------------------------------------------
-
     const allWeather = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,alerts&appid=${this.key}`, {mode: 'cors'});
     const allWeatherData = await allWeather.json();
-
     console.log(allWeatherData);
 
     const hourlyData = allWeatherData.hourly.slice(0, 25);
-    //hourlyData.forEach(hour => console.log( (new Date(hour.dt * 1000)).toLocaleString(), Math.round(1.8 * (hour.temp - 273.15) + 32), hour.weather[0].description ));
-
     const weeklyData = allWeatherData.daily;
-    //weeklyData.forEach(day => console.log( (new Date(day.dt * 1000)).toLocaleString(), Math.round(1.8 * (day.temp.day - 273.15) + 32), day.weather[0].description ));
 
     return {locationName, fahrenheit, celcius, weatherMain, weatherDescription, fahrenheitHigh, fahrenheitLow, celciusHigh, celciusLow, hourlyData, weeklyData};
   }
