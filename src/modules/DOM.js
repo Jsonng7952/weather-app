@@ -23,6 +23,7 @@ class DOM {
     temperatureMetric.addEventListener('click', () => this.changeTemperatureMetric());
   }
   
+  // Change the metrics based on the current selected metric.
   static changeTemperatureMetric() {
     if(this.currentMetric === 'f') {
       document.querySelector('.current-temperature').textContent = `${this.weatherInfo.celcius}°C`;
@@ -68,6 +69,7 @@ class DOM {
     }
   }
 
+  // Change weather according to the current metric.
   static async changeWeather(placeName) {
     this.weatherInfo = await WeatherAPI.getAllWeather(placeName);
     console.log(this.weatherInfo);
